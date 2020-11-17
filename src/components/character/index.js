@@ -4,7 +4,7 @@ import './index.css'
 
 const Character = () => {
     return (
-        <div className="character">
+        <div className="character" facing="up" walking="false">
             <SpriteSheet />
         </div>
     )
