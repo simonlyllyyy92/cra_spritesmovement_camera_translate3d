@@ -1,4 +1,4 @@
-import React, {useState, useRef} from 'react'
+import React, {useState} from 'react'
 import SpriteSheet from '../spriteSheet'
 import './index.css'
 

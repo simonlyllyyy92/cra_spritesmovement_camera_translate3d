@@ -1,5 +1,7 @@
+
+let held_directions = []
+
 export default function setDirections(type, which) {
-    let held_directions = []
 
     const directions = {
         up: "up",
