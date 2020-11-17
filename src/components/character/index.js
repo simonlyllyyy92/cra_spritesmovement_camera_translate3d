@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import SpriteSheet from '../spriteSheet'
 import './index.css'
 
@@ -7,13 +7,16 @@ import useKeyPress from '../../hooks/useKeyPress'
 import setDirections from '../../hooks/useHeldDirection'
 
 const Character = () => {
-
+    const [dir, setDir] = useState('down')
     useKeyPress((e) => {
-        setDirections(e.type, e.which)
+        const facing = setDirections(e.type, e.which)
+        if(facing){
+            setDir(facing)
+        }
     })
 
     return (
-        <div className="character" facing="up" walking="false">
+        <div className="character" facing={dir} walking="false">
             <SpriteSheet />
         </div>
     )

@@ -1,6 +1,3 @@
-import {useState} from 'react'
-
-
 export default function setDirections(type, which) {
     let held_directions = []
 
@@ -30,4 +27,6 @@ export default function setDirections(type, which) {
            held_directions.splice(index, 1)
         }
     }
+
+    return held_directions
 }
