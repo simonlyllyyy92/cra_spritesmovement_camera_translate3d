@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState, useRef, useEffect} from 'react'
 import SpriteSheet from '../spriteSheet'
 import './index.css'
 
@@ -6,17 +6,28 @@ import './index.css'
 import useKeyPress from '../../hooks/useKeyPress'
 import setDirections from '../../hooks/useHeldDirection'
 
+//helpers
+import setPlacements from '../../helpers/setPlacements'
+
 const Character = () => {
-    const [dir, setDir] = useState('down')
-    const [walking, setWalking] = useState('false')
+    const [dir, setDir] = useState('')
+    const [walking, setWalking] = useState('stop')
+
     useKeyPress((e) => {
         const facing = setDirections(e.type, e.which)
-        if(facing[0]){
-            setDir(facing[0])
+        if(facing){
+            setDir(facing)
         }
-        setWalking(facing[0] ? 'true' : 'false')
+        setPlacements(facing)
+        setWalking(facing ? 'start' : 'stop')
         e.preventDefault()
     })
+
+    useEffect(() => {
+        setPlacements(dir)
+    }, [])
+ 
+
     return (
         <div className="character" facing={dir} walking={walking}>
             <SpriteSheet />

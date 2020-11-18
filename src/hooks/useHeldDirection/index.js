@@ -30,5 +30,5 @@ export default function setDirections(type, which) {
         }
     }
 
-    return held_directions
+    return held_directions[0]
 }

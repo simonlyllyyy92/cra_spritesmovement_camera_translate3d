@@ -18,7 +18,7 @@
  }
 
 /*moving? or not*/
-.character[walking="true"] .character_spritesheet {
+.character[walking="start"] .character_spritesheet {
   animation: walkAnimation 0.6s steps(4) infinite; 
 }
 
