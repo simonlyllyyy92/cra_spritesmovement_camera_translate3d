@@ -1,8 +1,9 @@
 
 let x = 90
 let y = 34
-const stepSize = 1;
 
+
+const stepSize = 1;
 const pixelSize = parseInt(
     getComputedStyle(document.documentElement).getPropertyValue('--pixel-size')
  );
@@ -17,16 +18,15 @@ const modifier = {
 }
 
 
-export default function settleplacement(dir) {
+ export default function step(dir) {
     const character = document.querySelector('.character')
     const map = document.querySelector('.map')
-
     if(dir){
         x = x + modifier[dir].x
         y = y + modifier[dir].y
     }
-
+    // console.log(x, y)
     map.style.transform = `translate3d( ${-x*pixelSize+camera_left}px, ${-y*pixelSize+camera_top}px, 0px )`;
     character.style.transform = `translate3d( ${x*pixelSize}px, ${y*pixelSize}px, 0px )`; 
-
 }
+
