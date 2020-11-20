@@ -7,13 +7,15 @@ import useKeyPress from '../../hooks/useKeyPress'
 import setDirections from '../../hooks/useHeldDirection'
 
 //helpers
-import step from '../../helpers/setPlacements'
+// import {setPlacement} from '../../helpers/setPlacements'
 
-const Character = ({sprites}) => {
+// const {step} = setPlacement({x_aixs: 90, y_axis: 34})
+
+const Character = ({sprites, step}) => {
     const [dir, setDir] = useState('')
     const [walking, setWalking] = useState('stop')
     const [hasFacing, setHasFacing] = useState('')
-
+  
     //If having mutable values that needs to be remembered at the next or later renders 
     //and don’t want them to trigger a re-render when they change, then use useRef
     const moveRef = useRef()

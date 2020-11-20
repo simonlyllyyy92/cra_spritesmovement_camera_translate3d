@@ -1,14 +1,15 @@
 import React from 'react'
-import Character from '../character/index'
+import SetPlacements from '../setPlacements'
 import './index.css'
-
 //character 
 import {imageGalary} from '../../assets'
+
 
 const Map = () => {
     return (
         <div className="map pixel-art">
-            <Character sprites={imageGalary.m2}/>
+            <SetPlacements sprites={imageGalary.m2} x={90} y={34} isPlayer={true}/>
+            <SetPlacements sprites={imageGalary.m1} x={60} y={50} isPlayer={false} dir={'down'}/>
         </div>
     )
 }
