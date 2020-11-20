@@ -1,25 +1,25 @@
 
 .character {
-    width: calc( var(--grid-cell)* 2 );
-    height: calc( var(--grid-cell)* 2 );
+    width: calc( var(--grid-cell)* 1 );
+    height: calc( var(--grid-cell)* 1 );
     position: absolute;
     overflow:hidden;
   }
   
 /*facing direction */  
+.character[facing="left"] .character_spritesheet {
+    background-position-y: calc( var(--pixel-size) * -16);
+ }
 .character[facing="right"] .character_spritesheet {
     background-position-y: calc( var(--pixel-size) * -32 );
  }
 .character[facing="up"] .character_spritesheet {
-    background-position-y: calc( var(--pixel-size) * -64 );
- }
-.character[facing="left"] .character_spritesheet {
-    background-position-y: calc( var(--pixel-size) * -96 );
+    background-position-y: calc( var(--pixel-size) * -48 );
  }
 
 /*moving? or not*/
 .character[walking="start"] .character_spritesheet {
-  animation: walkAnimation 0.6s steps(4) infinite; 
+  animation: walkAnimation 0.6s steps(3) infinite; 
 }
 
 @keyframes walkAnimation {

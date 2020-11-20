@@ -9,7 +9,7 @@ import setDirections from '../../hooks/useHeldDirection'
 //helpers
 import step from '../../helpers/setPlacements'
 
-const Character = () => {
+const Character = ({sprites}) => {
     const [dir, setDir] = useState('')
     const [walking, setWalking] = useState('stop')
     const [hasFacing, setHasFacing] = useState('')
@@ -51,8 +51,12 @@ const Character = () => {
 
 
     return (
-        <div className="character" facing={dir} walking={walking}>
-            <SpriteSheet />
+        <div 
+            className="character" 
+            facing={dir} 
+            walking={walking} 
+        >
+            <SpriteSheet sprites={sprites}/>
         </div>
     )
 }

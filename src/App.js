@@ -1,5 +1,5 @@
 import './App.css';
-import Character from './components/character'
+import Map from './components/map'
 
 function App() {
   return (
@@ -10,9 +10,7 @@ function App() {
       <div className="corner_bottomright"></div>
 
       <div className="camera">
-        <div className="map pixel-art">
-          <Character />
-        </div>
+        <Map />
       </div>
     </div>
   );
