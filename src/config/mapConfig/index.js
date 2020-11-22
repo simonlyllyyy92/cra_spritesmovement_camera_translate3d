@@ -14,14 +14,16 @@ export const mapConfig =
                 skinId: imageGalary.m2,
                 direction: "right",
                 x: 6 * grillSize / pixelSize,
-                y: 6 * grillSize / pixelSize  + 8
+                y: 6 * grillSize / pixelSize  + 8,
+                isPlayer: true
             },
             {
                 id: 2, 
                 skinId: imageGalary.m3,
                 direction: "left",
                 x: 6 * grillSize / pixelSize,
-                y: 7 * grillSize / pixelSize
+                y: 7 * grillSize / pixelSize,
+                isPlayer: false
             }
         ],
         walls:{

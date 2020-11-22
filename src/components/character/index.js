@@ -1,7 +1,6 @@
 import React, {useState, useRef, useEffect} from 'react'
 import SpriteSheet from '../spriteSheet'
 import './index.css'
-import {connect} from 'react-redux'
 
 //hooks
 import useKeyPress from '../../hooks/useKeyPress'
@@ -13,7 +12,7 @@ const Character = ({sprites, step, direction, mapState}) => {
     const [hasFacing, setHasFacing] = useState('')
 
     const moveRef = useRef()
-
+    
     useKeyPress((e) => {
         const facing = setDirections(e.type, e.which)
         if(facing){
@@ -23,7 +22,7 @@ const Character = ({sprites, step, direction, mapState}) => {
         setWalking(facing ? 'start' : 'stop')
         e.preventDefault()
     })
- 
+
     const animate = time => {
         step(dir)
         if(hasFacing){
@@ -48,11 +47,7 @@ const Character = ({sprites, step, direction, mapState}) => {
     )
 }
 
-const mapStateToProps = (state) => ({
-    mapState: state.mapReducer.mapSource,
-    peopleState: state.mapReducer.people,
-})
 
-export default connect(mapStateToProps)(Character)
+export default Character
 
 
