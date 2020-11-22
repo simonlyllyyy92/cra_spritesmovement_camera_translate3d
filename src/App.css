@@ -7,19 +7,6 @@
   position:relative;
 }
 
-.camera {
-  width: calc(var(--pixel-size) * 160);
-  height: calc(var(--pixel-size) * 144);
-  overflow: hidden;
-  background: #61ddf7;
-  position:relative;
-}
-
-.pixel-art {
-  image-rendering: pixelated;
-}
-
-
 /*Setting up the corner style*/
 .corner_topleft,
 .corner_topright,

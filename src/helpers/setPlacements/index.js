@@ -1,7 +1,9 @@
-export const setPlacement = ({x_aixs= 90, y_axis= 34}) => {
+import {switchMap} from '../../store/mapStore/action'
+import {mapConfig} from '../../config'
+
+export const setPlacement = ({x_aixs= 90, y_axis= 34, dispatch}) => {
     let x = x_aixs
     let y = y_axis
-
     const stepSize = 1;
     const pixelSize = parseInt(
         getComputedStyle(document.documentElement).getPropertyValue('--pixel-size')
@@ -46,9 +48,10 @@ export const setPlacement = ({x_aixs= 90, y_axis= 34}) => {
        if (x < leftLimit) { x = leftLimit; }
        if (x > rightLimit) { x = rightLimit; }
        if (y < topLimit) { y = topLimit; }
-       if (y > bottomLimit) { y = bottomLimit; }
-       
-        // console.log(x, y)
+       if (y > bottomLimit) { 
+           y = bottomLimit; 
+           dispatch(switchMap(mapConfig))
+        }
         map.style.transform = `translate3d( ${-x*pixelSize+camera_left}px, ${-y*pixelSize+camera_top}px, 0px )`;
         character.style.transform = `translate3d( ${x*pixelSize}px, ${y*pixelSize}px, 0px )`; 
     }

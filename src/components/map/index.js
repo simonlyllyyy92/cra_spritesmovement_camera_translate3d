@@ -1,17 +1,40 @@
 import React from 'react'
 import SetPlacements from '../setPlacements'
 import './index.css'
+import {connect} from 'react-redux'
 //character 
-import {imageGalary} from '../../assets'
+const Map = ({mapState, peopleState, wallState}) => {
+    const pixelSize = parseInt(
+        getComputedStyle(document.documentElement).getPropertyValue('--pixel-size')
+     );
+    const grillSize = pixelSize * 16
 
+    const width = wallState.width * grillSize
+    const height = wallState.height * grillSize
 
-const Map = () => {
     return (
-        <div className="map pixel-art">
-            <SetPlacements sprites={imageGalary.m2} x={90} y={34} isPlayer={true}/>
-            <SetPlacements sprites={imageGalary.m1} x={60} y={50} isPlayer={false} dir={'down'}/>
+        <div className="map pixel-art" style={{
+            backgroundImage: `url(${mapState})`,
+            width:`${width}px`,
+            height: `${height}px`
+        }}>
+            {peopleState.map(item => 
+                <SetPlacements 
+                    sprites={item.skinId} 
+                    key={item.id}
+                    x={item.x} 
+                    y={item.y} 
+                    isPlayer={item.isPlayer}
+                    dir={item.direction} 
+                />)}
         </div>
     )
 }
 
-export default Map
+const mapStateToProps = (state) => ({
+    mapState: state.mapReducer.mapSource,
+    peopleState: state.mapReducer.people,
+    wallState: state.mapReducer.walls
+})
+
+export default connect(mapStateToProps)(Map)

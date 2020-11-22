@@ -1,5 +1,5 @@
 import './App.css';
-import Map from './components/map'
+import Camera from './components/camera'
 
 function App() {
   return (
@@ -8,10 +8,7 @@ function App() {
       <div className="corner_topright"></div>
       <div className="corner_bottomleft"></div>
       <div className="corner_bottomright"></div>
-
-      <div className="camera">
-        <Map />
-      </div>
+      <Camera />
     </div>
   );
 }
