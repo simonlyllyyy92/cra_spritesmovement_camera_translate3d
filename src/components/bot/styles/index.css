@@ -1,0 +1,17 @@
+.ai {
+    width: calc( var(--grid-cell)* 1 );
+    height: calc( var(--grid-cell)* 1 );
+    position: absolute;
+    overflow:hidden;
+  }
+  
+/*facing direction */  
+.ai[data-facing="left"] .character_spritesheet {
+    background-position-y: calc( var(--pixel-size) * -16);
+ }
+.ai[data-facing="right"] .character_spritesheet {
+    background-position-y: calc( var(--pixel-size) * -32 );
+ }
+.ai[data-facing="up"] .character_spritesheet {
+    background-position-y: calc( var(--pixel-size) * -48 );
+ }

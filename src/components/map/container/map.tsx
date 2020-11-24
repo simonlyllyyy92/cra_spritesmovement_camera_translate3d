@@ -1,34 +1,16 @@
 import * as React from "react";
+import '../styles/index.css'
+import {PropsFromRedux, connector} from '../components/connecter'
+import {Setplacements} from '../../index'
 
-interface wallState {
-    width: number;
-    height: number;
-}
 
-interface peopleState {
-    id:number;
-    skinId: string;
-    direction: string;
-    x: number;
-    y: number;
-    isPlayer:boolean;
-
-}
-
-interface MapProps {
-    mapState: string;
-    peopleState: Array<peopleState>;
-    wallState: wallState;
-
-}
-const Map : React.FunctionComponent<MapProps> = ({mapState, peopleState, wallState}) => {
+const Map : React.FunctionComponent<PropsFromRedux> = ({mapState, peopleState, wallState}) => {
     const pixelSize:number = parseInt(
         getComputedStyle(document.documentElement).getPropertyValue('--pixel-size')
     )
     const grillSize:number = pixelSize * 16 
     const width:number = wallState.width * grillSize
     const height:number = wallState.height * grillSize
-
     return (
         <div className="map pixel-art" style={{
             backgroundImage:`url(${mapState})`,
@@ -36,9 +18,9 @@ const Map : React.FunctionComponent<MapProps> = ({mapState, peopleState, wallSta
             height:`${height}px`
         }}>
             {peopleState.map(item => 
-                <SetPlacements 
-                    sprites = {item.skinId}
-                    key = {item.id}
+                <Setplacements 
+                    sprites={item.skinId}
+                    key={item.id}
                     x={item.x}
                     y={item.y}
                     isPlayer={item.isPlayer}
@@ -49,4 +31,4 @@ const Map : React.FunctionComponent<MapProps> = ({mapState, peopleState, wallSta
     )
 }
 
-export default Map
+export default connector(Map)
