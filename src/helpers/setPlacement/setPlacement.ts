@@ -63,6 +63,7 @@ export const setPlacement = ({x_axis = 90, y_axis=34, dispatch} : PositionProps)
             dispatch(switchMap(mapConfig))
          }
 
+         console.log(x, y)
          if(map === null){
              alert('cannot find map element')
          }else{
