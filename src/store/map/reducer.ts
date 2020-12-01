@@ -34,7 +34,7 @@ const initialState : MapInitialState = {
                 isPlayer:false
             }
         ],
-        walls: {width:13, height:10}
+        walls: {width:13 * grillSize, height:10 * grillSize}
     }
 } 
 
@@ -46,7 +46,7 @@ export const mapReducer = (state = initialState, action : MapActionTypes): MapIn
                 maps: {
                     mapSource: action.payload.mapSource,
                     people: action.payload.people,
-                    walls: action.payload.walls
+                    walls: action.payload.walls,
                 }
             }
         default:

@@ -14,8 +14,8 @@ export const mapConfig : MapState =
                 id: 1,
                 skinId: imageGalary.m2,
                 direction: "right",
-                x: 6 * grillSize / pixelSize,
-                y: 1 * grillSize / pixelSize  + 8,
+                x: 7 * grillSize / pixelSize,
+                y: 0 * grillSize / pixelSize,
                 isPlayer: true
             },
             {
@@ -28,7 +28,7 @@ export const mapConfig : MapState =
             }
         ],
         walls:{
-            width:15,
-            height:15
+            width: 15 * grillSize,
+            height: 15 * grillSize
         }
     }

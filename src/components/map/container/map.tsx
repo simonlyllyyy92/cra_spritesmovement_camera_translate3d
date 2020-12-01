@@ -4,18 +4,13 @@ import {PropsFromRedux, connector} from '../components/connecter'
 import {Setplacements} from '../../index'
 
 
-const Map : React.FunctionComponent<PropsFromRedux> = ({mapState, peopleState, wallState}) => {
-    const pixelSize:number = parseInt(
-        getComputedStyle(document.documentElement).getPropertyValue('--pixel-size')
-    )
-    const grillSize:number = pixelSize * 16 
-    const width:number = wallState.width * grillSize
-    const height:number = wallState.height * grillSize
+const Map : React.FunctionComponent<PropsFromRedux> = ({mapState, peopleState, wallState}) => { 
+    
     return (
         <div className="map pixel-art" style={{
             backgroundImage:`url(${mapState})`,
-            width:`${width}px`,
-            height:`${height}px`
+            width:`${wallState.width}px`,
+            height:`${wallState.height}px`
         }}>
             {peopleState.map(item => 
                 <Setplacements 

@@ -2,16 +2,22 @@ import {switchMap} from '../../store/map/action'
 
 import {mapConfig} from '../../config/mapConfig'
 
+ interface MapBorders {
+    width: number;
+    height: number;
+}
+
 interface PositionProps {
     x_axis: number;
     y_axis: number;
     dispatch: Function;
+    walls: MapBorders
 }
 interface Modifier  {
     [key:string] : {x: number; y: number};
 }
 
-export const setPlacement = ({x_axis = 90, y_axis=34, dispatch} : PositionProps) => {
+export const setPlacement = ({x_axis = 90, y_axis=34, dispatch, walls} : PositionProps) => {
     let x : number = x_axis
     let y : number = y_axis
     const stepSize : number = 1;
@@ -40,12 +46,12 @@ export const setPlacement = ({x_axis = 90, y_axis=34, dispatch} : PositionProps)
      * @So change the grid-cell value if want to change the map size, don't change the number
      *  cause number represent the box's number
      */
+    const {width, height} = walls
 
-    const leftLimit : number = 0 * grillSize / pixelSize; // character can not go beyond the first left box
-    const rightLimit : number = 12 * grillSize / pixelSize; // character cannot go beyond more than 12 boxes on the right
-    const topLimit : number = 2 * grillSize / pixelSize + 8; // the character can't reach top 2 boxes + 8 * pixelSize
-    const bottomLimit : number = 8 * grillSize / pixelSize; //10 boxes in vertical totally, and bottomlimit = 9 * boxes - 1 * bodysize,  which are, 9 * grillSize / pixelSize - 1 * grillSize / pixelSize
-                                                   // as character body is equal to one box width and height
+    const leftLimit : number =  0
+    const rightLimit : number = (width - 1 * grillSize)/pixelSize
+    const topLimit : number = 0
+    const bottomLimit : number = (height - 2 * grillSize)/pixelSize
 
     function step(dir:string):void{
         const character : HTMLElement | null= document.querySelector('.character')
@@ -63,7 +69,7 @@ export const setPlacement = ({x_axis = 90, y_axis=34, dispatch} : PositionProps)
             dispatch(switchMap(mapConfig))
          }
 
-         console.log(x, y)
+        //  console.log(x, y)
          if(map === null){
              alert('cannot find map element')
          }else{
