@@ -12,8 +12,8 @@ interface PlacementsProps extends PropsFromRedux{
     dir: string;
 }
 
-const SetPlacements : React.FunctionComponent<PlacementsProps> = ({sprites, x, y, isPlayer, dir, dispatch, walls}) => {
-    const {step, aiStep} = setPlacement({x_axis:x, y_axis: y, dispatch, walls})
+const SetPlacements : React.FunctionComponent<PlacementsProps> = ({sprites, x, y, isPlayer, dir, dispatch, walls, blocks}) => {
+    const {step, aiStep} = setPlacement({x_axis:x, y_axis: y, dispatch, walls, blocks})
     return (
         <div>
             {

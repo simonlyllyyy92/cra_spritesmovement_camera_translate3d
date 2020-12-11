@@ -6,18 +6,22 @@ import {mapConfig} from '../../config/mapConfig'
     width: number;
     height: number;
 }
+interface Blocks {
+    [key:number] : {x1: number; x2: number}
+}
 
 interface PositionProps {
     x_axis: number;
     y_axis: number;
     dispatch: Function;
-    walls: MapBorders
+    walls: MapBorders;
+    blocks: Array<Blocks>;
 }
 interface Modifier  {
     [key:string] : {x: number; y: number};
 }
 
-export const setPlacement = ({x_axis = 90, y_axis=34, dispatch, walls} : PositionProps) => {
+export const setPlacement = ({x_axis = 90, y_axis=34, dispatch, walls, blocks} : PositionProps) => {
     let x : number = x_axis
     let y : number = y_axis
     const stepSize : number = 1;
@@ -61,6 +65,7 @@ export const setPlacement = ({x_axis = 90, y_axis=34, dispatch, walls} : Positio
             x = x + modifier[dir].x
             y = y + modifier[dir].y
         }
+        // if steps reach the walls limits then stop
         if (x < leftLimit) { x = leftLimit; }
         if (x > rightLimit) { x = rightLimit; }
         if (y < topLimit) { y = topLimit; }

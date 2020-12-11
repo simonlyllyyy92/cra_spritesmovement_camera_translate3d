@@ -8,6 +8,7 @@ const grillSize :number = pixelSize * 16
 
 export const mapConfig : MapState = 
     {
+        id: 21,
         mapSource: mapsGalary.map2,
         people: [
             {
@@ -30,5 +31,13 @@ export const mapConfig : MapState =
         walls:{
             width: 15 * grillSize,
             height: 15 * grillSize
-        }
+        },
+        blocks: [
+          {
+              5: {
+                  x1: 7,
+                  x2: 9
+              }
+          }
+        ]
     }

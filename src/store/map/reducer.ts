@@ -14,6 +14,7 @@ const grillSize : number = pixelSize * 16;
 
 const initialState : MapInitialState = {
     maps:{
+        id: 16,
         mapSource: "https://assets.codepen.io/21542/CameraDemoMap.png",
         //direction should be in lower case
         people: [
@@ -34,7 +35,15 @@ const initialState : MapInitialState = {
                 isPlayer:false
             }
         ],
-        walls: {width:13 * grillSize, height:10 * grillSize}
+        walls: {width:13 * grillSize, height:10 * grillSize},
+        blocks: [
+            {
+                3:{
+                    x1: 0,
+                    x2: 13
+                }
+            }
+        ]
     }
 } 
 
@@ -44,9 +53,11 @@ export const mapReducer = (state = initialState, action : MapActionTypes): MapIn
             return {
                 ...state,
                 maps: {
+                    id: action.payload.id,
                     mapSource: action.payload.mapSource,
                     people: action.payload.people,
                     walls: action.payload.walls,
+                    blocks: action.payload.blocks
                 }
             }
         default:

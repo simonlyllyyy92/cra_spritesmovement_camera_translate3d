@@ -12,8 +12,14 @@ interface Walls {
     height: number;
 }
 
+interface Blocks {
+    [key:number] : {x1: number; x2: number}
+}
+
 export interface MapState {
     mapSource: string;
     people: Array<People>;
     walls:Walls;
+    blocks: Array<Blocks>;
+    id: number;
 }
